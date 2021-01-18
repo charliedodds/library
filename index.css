@@ -142,6 +142,7 @@ form input {
   width: 50px;
   border-radius: 50%;
   font-size: 30px;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
