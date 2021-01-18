@@ -1,0 +1,76 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url('background.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Open Sans', sans-serif;
+  color: #eeeeee;
+  font-size: 2rem;
+  overflow-y: scroll;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Fraunces, serif;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(51, 10, 0, 0.7);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+h1 {
+  font-size: 6rem;
+}
+
+#library {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(51, 10, 0, 0.7);
+}
+
+.book {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.book-info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.book-author {
+  font-weight: bold;
+  font-size: 2.25rem;
+  letter-spacing: 0.15rem;
+}
