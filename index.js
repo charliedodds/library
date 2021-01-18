@@ -76,3 +76,18 @@ function createBookElement(book) {
   library.appendChild(newBook);
   // add book to library section
 }
+
+const addBtn = document.getElementById('addBook');
+
+addBtn.addEventListener('click', toggleBookForm);
+
+function toggleBookForm() {
+  toggleRotate();
+  const form = document.querySelector('form');
+  form.classList.toggle('hidden');
+  form.classList.toggle('showing');
+}
+
+function toggleRotate() {
+  addBtn.classList.toggle('rotate');
+}

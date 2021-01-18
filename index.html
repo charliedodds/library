@@ -10,12 +10,48 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Open+Sans&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <main>
       <h1>Library</h1>
       <section id="library"></section>
+      <form class="hidden">
+        <h3 class="add-book-title">Add Book</h3>
+        <label for="bookTitle">Title:</label>
+        <input id="bookTitle" placeholder="Title" required type="text" />
+        <label for="bookCover">Book Cover:</label>
+        <input
+          id="bookCover"
+          placeholder="Book cover URL"
+          required
+          type="text"
+        />
+        <label for="bookAuthor">Author:</label>
+        <input id="bookAuthor" placeholder="Author" required type="text" />
+        <label for="bookPages">Number of Pages:</label>
+        <input
+          id="bookPages"
+          placeholder="Number of Pages"
+          required
+          type="number"
+          min="1"
+        />
+        <div class="checkbox">
+          <label for="bookRead">Read it yet?</label>
+          <input id="bookRead" type="checkbox" />
+        </div>
+        <button id="submit">Add</button>
+      </form>
+      <button id="addBook">
+        <i class="fas fa-plus"></i>
+      </button>
     </main>
     <script src="index.js"></script>
   </body>
