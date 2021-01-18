@@ -22,6 +22,16 @@ const harryPotter1 = new Book(
 
 addBookToLibrary(harryPotter1, books);
 
+const harryPotter2 = new Book(
+  'Harry Potter and the Chamber of Secrets',
+  'J.K. Rowling',
+  251,
+  false,
+  'https://images-na.ssl-images-amazon.com/images/I/51kdLYNJFsL._SX326_BO1,204,203,200_.jpg'
+);
+
+addBookToLibrary(harryPotter2, books);
+
 console.log(books);
 
 const library = document.getElementById('library');
@@ -43,14 +53,15 @@ function createBookElement(book) {
   newBookCover.classList.add('book-cover');
   newBookCover.setAttribute('src', book.cover);
   newBook.appendChild(newBookCover);
-  const newBookInfoDiv = document.createElement('div');
-  newBookInfoDiv.classList.add('book-info');
-  // create and add book cover to book info div
-  const newBookAuthor = document.createElement('p');
+  // create and add book cover to book div
+  const newBookAuthor = document.createElement('h3');
   newBookAuthor.classList.add('book-author');
   newBookAuthor.textContent = book.author;
-  newBookInfoDiv.appendChild(newBookAuthor);
-  // create and add book author to book info div
+  newBook.appendChild(newBookAuthor);
+  // create and add book author to book div
+  const newBookInfoDiv = document.createElement('div');
+  newBookInfoDiv.classList.add('book-info');
+  // create book info div
   const newBookPages = document.createElement('p');
   newBookPages.classList.add('book-pages');
   newBookPages.textContent = `${book.pages} pages`;
