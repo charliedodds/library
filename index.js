@@ -3,8 +3,6 @@ let books = JSON.parse(getBooks());
 function getBooks() {
   if (!localStorage.getItem('library')) {
     localStorage.setItem('library', '[]');
-  } else {
-    removeInstructions();
   }
   return localStorage.getItem('library');
 }
@@ -26,6 +24,9 @@ const library = document.getElementById('library');
 
 for (let i = 0; i < books.length; i++) {
   createBookElement(books[i], i);
+  if (books.length > 0) {
+    removeInstructions();
+  }
 }
 
 function createBookElement(book, idx) {
