@@ -39,24 +39,24 @@ for (let i = 0; i < books.length; i++) {
 }
 
 function createBookElement(book, idx) {
-  const newBook = document.createElement('div');
-  newBook.classList.add('book');
-  newBook.dataset.bookNum = idx;
+  const createdBook = document.createElement('div');
+  createdBook.classList.add('book');
+  createdBook.dataset.bookNum = idx;
   // create book
   const newBookTitle = document.createElement('h2');
   newBookTitle.classList.add('book-title');
   newBookTitle.textContent = book.title;
-  newBook.appendChild(newBookTitle);
+  createdBook.appendChild(newBookTitle);
   // create and add book title to book div
   const newBookCover = document.createElement('img');
   newBookCover.classList.add('book-cover');
   newBookCover.setAttribute('src', book.cover);
-  newBook.appendChild(newBookCover);
+  createdBook.appendChild(newBookCover);
   // create and add book cover to book div
   const newBookAuthor = document.createElement('h3');
   newBookAuthor.classList.add('book-author');
   newBookAuthor.textContent = book.author;
-  newBook.appendChild(newBookAuthor);
+  createdBook.appendChild(newBookAuthor);
   // create and add book author to book div
   const newBookInfoDiv = document.createElement('div');
   newBookInfoDiv.classList.add('book-info');
@@ -78,11 +78,14 @@ function createBookElement(book, idx) {
   deleteDiv.addEventListener('click', deleteBook);
   newBookInfoDiv.appendChild(deleteDiv);
   // create and add delete button to book info div
-  newBook.appendChild(newBookInfoDiv);
-  library.appendChild(newBook);
+  createdBook.appendChild(newBookInfoDiv);
+  library.appendChild(createdBook);
   // add book to library section
 }
 
+const form = document.querySelector('form');
+
+form.addEventListener('submit', submitBook);
 // ANIMATE NEW BOOK FORM
 
 const addBtn = document.getElementById('addBook');
@@ -96,7 +99,6 @@ function handleNewBookClick() {
 }
 
 function toggleBookForm() {
-  const form = document.querySelector('form');
   form.classList.toggle('hiding');
   form.classList.toggle('showing');
 }
@@ -122,11 +124,11 @@ function deleteBook(e) {
     `div[data-book-num="${e.target.parentElement.parentElement.parentElement.dataset.bookNum}"]`
   );
   library.removeChild(bookToDelete);
-  updateBooksArray(e);
+  deleteBookFromBooksArray(e);
   updateBookNums();
 }
 
-function updateBooksArray(e) {
+function deleteBookFromBooksArray(e) {
   books.splice(
     e.target.parentElement.parentElement.parentElement.dataset.bookNum,
     1
@@ -150,4 +152,23 @@ function toggleRead(e) {
       e.target.textContent = 'Read';
       break;
   }
+}
+
+function submitBook(e) {
+  e.preventDefault();
+  const bookTitle = document.getElementById('bookTitle');
+  const bookCover = document.getElementById('bookCover');
+  const bookAuthor = document.getElementById('bookAuthor');
+  const bookPages = document.getElementById('bookPages');
+  const bookRead = document.getElementById('bookRead');
+  const newBook = new Book(
+    bookTitle.value,
+    bookAuthor.value,
+    parseInt(bookPages.value),
+    bookRead.checked,
+    bookCover.value
+  );
+  addBookToLibrary(newBook, books);
+  createBookElement(newBook, books.length - 1);
+  handleNewBookClick();
 }
