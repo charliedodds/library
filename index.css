@@ -156,6 +156,9 @@ form input {
   right: 15px;
   box-shadow: 2.5px 5px 5px rgba(51, 10, 0, 0.5);
   z-index: 10;
+}
+
+#plus {
   transition: 1s;
 }
 
@@ -164,10 +167,25 @@ form input {
 }
 
 .hidden {
-  opacity: 0;
-  transform: translateY(20px);
+  animation: hide 1s forwards;
 }
 
 .showing {
-  opacity: 1;
+  display: flex;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: show 1s forwards;
+}
+
+@keyframes show {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hide {
+  100% {
+    opacity: 0;
+    display: none;
+  }
 }

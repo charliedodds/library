@@ -32,8 +32,6 @@ const harryPotter2 = new Book(
 
 addBookToLibrary(harryPotter2, books);
 
-console.log(books);
-
 const library = document.getElementById('library');
 
 for (let book of books) {
@@ -89,5 +87,6 @@ function toggleBookForm() {
 }
 
 function toggleRotate() {
-  addBtn.classList.toggle('rotate');
+  const plus = document.getElementById('plus');
+  plus.classList.toggle('rotate');
 }
