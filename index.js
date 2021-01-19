@@ -34,13 +34,14 @@ addBookToLibrary(harryPotter2, books);
 
 const library = document.getElementById('library');
 
-for (let book of books) {
-  createBookElement(book);
+for (let i = 0; i < books.length; i++) {
+  createBookElement(books[i], i);
 }
 
-function createBookElement(book) {
+function createBookElement(book, idx) {
   const newBook = document.createElement('div');
   newBook.classList.add('book');
+  newBook.dataset.bookNum = idx;
   // create book
   const newBookTitle = document.createElement('h2');
   newBookTitle.classList.add('book-title');
@@ -70,6 +71,12 @@ function createBookElement(book) {
   newBookRead.textContent = book.beenRead ? 'Read' : 'To be read';
   newBookInfoDiv.appendChild(newBookRead);
   // create and add read/to be read to book info div
+  const deleteDiv = document.createElement('div');
+  deleteDiv.classList.add('book-delete');
+  deleteDiv.innerHTML = '<i class="fas fa-trash-alt"></i>';
+  deleteDiv.addEventListener('click', deleteBook);
+  newBookInfoDiv.appendChild(deleteDiv);
+  // create and add delete button to book info div
   newBook.appendChild(newBookInfoDiv);
   library.appendChild(newBook);
   // add book to library section
@@ -106,5 +113,29 @@ function resetInputs() {
     } else {
       input.value = '';
     }
+  }
+}
+
+function deleteBook(e) {
+  const bookToDelete = document.querySelector(
+    `div[data-book-num="${e.target.parentElement.parentElement.parentElement.dataset.bookNum}"]`
+  );
+  library.removeChild(bookToDelete);
+  updateBooksArray(e);
+  updateBookNums();
+}
+
+function updateBooksArray(e) {
+  books.splice(
+    e.target.parentElement.parentElement.parentElement.dataset.bookNum,
+    1
+  );
+}
+
+// this function prevents books being created with the same book num data attribute
+function updateBookNums() {
+  for (let i = 0; i < books.length; i++) {
+    const booksToUpdate = document.querySelectorAll('div.book');
+    booksToUpdate[i].dataset.bookNum = i;
   }
 }
