@@ -47,6 +47,19 @@ h1 {
   font-size: 6rem;
 }
 
+#instructions {
+  padding: 3rem;
+}
+
+.instructions-heading {
+  text-align: center;
+}
+
+#instructions p {
+  font-weight: bold;
+  margin: 4rem 1.5rem;
+}
+
 #library {
   width: 100%;
   min-height: 100%;

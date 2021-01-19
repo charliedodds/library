@@ -81,6 +81,7 @@ const addBtn = document.getElementById('addBook');
 addBtn.addEventListener('click', handleNewBookClick);
 
 function handleNewBookClick() {
+  removeInstructions();
   toggleRotate();
   toggleBookForm();
   resetInputs();
@@ -165,4 +166,11 @@ function submitBook(e) {
 
 function updateLocalStorage() {
   localStorage.setItem('library', JSON.stringify(books));
+}
+
+function removeInstructions() {
+  const instructions = document.getElementById('instructions');
+  if (instructions.style.display !== 'none') {
+    instructions.style.display = 'none';
+  }
 }
