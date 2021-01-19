@@ -58,6 +58,7 @@ h1 {
 #instructions p {
   font-weight: bold;
   margin: 4rem 1.5rem;
+  text-align: justify;
 }
 
 #library {
