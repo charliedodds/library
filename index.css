@@ -97,7 +97,7 @@ form {
   width: 90%;
   height: 50rem;
   border-radius: 1rem;
-  margin-top: -60%;
+  margin-top: -25rem;
   margin-left: -45%;
   background-color: #eee;
   color: rgb(51, 10, 0);
@@ -166,26 +166,12 @@ form input {
   transform: rotate(45deg);
 }
 
-.hidden {
-  animation: hide 1s forwards;
-}
-
-.showing {
-  display: flex;
+.hiding {
   opacity: 0;
-  transform: translateY(-20px);
-  animation: show 1s forwards;
+  transform: translateY(101vh);
 }
 
-@keyframes show {
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes hide {
-  100% {
-    opacity: 0;
-    display: none;
-  }
+showing {
+  opacity: 1;
+  transform: translateY(0);
 }

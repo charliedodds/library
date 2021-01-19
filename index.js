@@ -75,18 +75,36 @@ function createBookElement(book) {
   // add book to library section
 }
 
+// ANIMATE NEW BOOK FORM
+
 const addBtn = document.getElementById('addBook');
 
-addBtn.addEventListener('click', toggleBookForm);
+addBtn.addEventListener('click', handleNewBookClick);
+
+function handleNewBookClick() {
+  toggleRotate();
+  toggleBookForm();
+  resetInputs();
+}
 
 function toggleBookForm() {
-  toggleRotate();
   const form = document.querySelector('form');
-  form.classList.toggle('hidden');
+  form.classList.toggle('hiding');
   form.classList.toggle('showing');
 }
 
 function toggleRotate() {
   const plus = document.getElementById('plus');
   plus.classList.toggle('rotate');
+}
+
+function resetInputs() {
+  const inputs = document.querySelectorAll('input');
+  for (let input of inputs) {
+    if (input.checked) {
+      input.checked = false;
+    } else {
+      input.value = '';
+    }
+  }
 }
