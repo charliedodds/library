@@ -1,4 +1,11 @@
-let books = [];
+let books = JSON.parse(getBooks());
+
+function getBooks() {
+  if (!localStorage.getItem('library')) {
+    localStorage.setItem('library', '[]');
+  }
+  return localStorage.getItem('library');
+}
 
 function Book(title, author, pages, beenRead, cover) {
   this.title = title;
@@ -10,27 +17,8 @@ function Book(title, author, pages, beenRead, cover) {
 
 function addBookToLibrary(book, arrayOfBooks) {
   arrayOfBooks.push(book);
+  updateLocalStorage();
 }
-
-const harryPotter1 = new Book(
-  "Harry Potter and the Philosopher's Stone",
-  'J.K. Rowling',
-  223,
-  true,
-  'https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Harry_Potter_and_the_Philosopher%27s_Stone_Book_Cover.jpg/220px-Harry_Potter_and_the_Philosopher%27s_Stone_Book_Cover.jpg'
-);
-
-addBookToLibrary(harryPotter1, books);
-
-const harryPotter2 = new Book(
-  'Harry Potter and the Chamber of Secrets',
-  'J.K. Rowling',
-  251,
-  false,
-  'https://images-na.ssl-images-amazon.com/images/I/51kdLYNJFsL._SX326_BO1,204,203,200_.jpg'
-);
-
-addBookToLibrary(harryPotter2, books);
 
 const library = document.getElementById('library');
 
@@ -126,6 +114,7 @@ function deleteBook(e) {
   library.removeChild(bookToDelete);
   deleteBookFromBooksArray(e);
   updateBookNums();
+  updateLocalStorage();
 }
 
 function deleteBookFromBooksArray(e) {
@@ -171,4 +160,9 @@ function submitBook(e) {
   addBookToLibrary(newBook, books);
   createBookElement(newBook, books.length - 1);
   handleNewBookClick();
+  updateLocalStorage();
+}
+
+function updateLocalStorage() {
+  localStorage.setItem('library', JSON.stringify(books));
 }

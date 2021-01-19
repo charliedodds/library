@@ -82,9 +82,10 @@ h1 {
   align-items: center;
 }
 
-.book-pages,
-.book-read {
-  margin: 1rem;
+.book-read,
+#addBook,
+.book-delete {
+  cursor: pointer;
 }
 
 form {
@@ -137,7 +138,6 @@ form input {
 }
 
 #addBook {
-  cursor: pointer;
   height: 50px;
   width: 50px;
   border-radius: 50%;
