@@ -3,6 +3,8 @@ let books = JSON.parse(getBooks());
 function getBooks() {
   if (!localStorage.getItem('library')) {
     localStorage.setItem('library', '[]');
+  } else {
+    removeInstructions();
   }
   return localStorage.getItem('library');
 }

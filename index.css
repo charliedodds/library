@@ -188,3 +188,56 @@ showing {
   opacity: 1;
   transform: translateY(0);
 }
+
+@media (min-width: 767.98px) {
+  .book {
+    max-width: 50%;
+  }
+  #library {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  form {
+    max-width: 70%;
+    margin-left: -35%;
+  }
+}
+
+@media (min-width: 1023.98px) {
+  .book {
+    max-width: 33%;
+  }
+  form {
+    max-width: 50%;
+    margin-left: -25%;
+  }
+}
+
+@media (min-width: 1439.98px) {
+  html {
+    font-size: 20px;
+  }
+  body {
+    font-size: 1.125rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+  #library {
+    max-width: 1600px;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+  }
+  .book {
+    max-width: 25%;
+  }
+  form {
+    max-width: 40%;
+    margin-left: -20%;
+  }
+}
