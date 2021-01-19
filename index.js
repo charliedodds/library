@@ -69,6 +69,7 @@ function createBookElement(book, idx) {
   const newBookRead = document.createElement('p');
   newBookRead.classList.add('book-read');
   newBookRead.textContent = book.beenRead ? 'Read' : 'To be read';
+  newBookRead.addEventListener('click', toggleRead);
   newBookInfoDiv.appendChild(newBookRead);
   // create and add read/to be read to book info div
   const deleteDiv = document.createElement('div');
@@ -137,5 +138,16 @@ function updateBookNums() {
   for (let i = 0; i < books.length; i++) {
     const booksToUpdate = document.querySelectorAll('div.book');
     booksToUpdate[i].dataset.bookNum = i;
+  }
+}
+
+function toggleRead(e) {
+  switch (e.target.textContent) {
+    case 'Read':
+      e.target.textContent = 'To be read';
+      break;
+    case 'To be read':
+      e.target.textContent = 'Read';
+      break;
   }
 }
