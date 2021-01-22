@@ -7,12 +7,14 @@ function getBooks() {
   return localStorage.getItem('library');
 }
 
-function Book(title, author, pages, beenRead, cover) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.beenRead = beenRead;
-  this.cover = cover;
+class Book {
+  constructor(title, author, pages, beenRead, cover) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.beenRead = beenRead;
+    this.cover = cover;
+  }
 }
 
 function addBookToLibrary(book, arrayOfBooks) {
